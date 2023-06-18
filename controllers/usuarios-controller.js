@@ -6,7 +6,7 @@ const Usuario = require('../models/usuario');
 
 const usuariosGet = async(req = request, res = response) => {
 
-    const { limite = 10, pag = 1 } = req.query;
+    const { limite = 25, pag = 1 } = req.query;
 
     const hasta = limite * pag;
     const desde = hasta-limite;
