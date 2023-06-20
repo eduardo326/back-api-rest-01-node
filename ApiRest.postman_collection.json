@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "5e61902a-96f2-4e69-ab9e-8a47c23c7f01",
+		"name": "ApiRest",
+		"description": "API-Rest desarrollado con NodeJS que permite consultar y crear usuarios de una base de datos mongodb, tambien se conecta a un servicio externo llamado PokeAPI para asignar pokemones a una lista de favoritos de los usuarios.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20681506"
+	},
+	"item": [
+		{
+			"name": "Guardar Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Eduardo Garcia\",\r\n    \"login\": \"eduardo_326\",\r\n    \"email\": \"eduardo_326@hotmail.es\",\r\n    \"password\": \"21zxcz215z\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Este endpoint permite crear un usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar usuarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"limite\": 10,\r\n    \"pag\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Este metodo permite consultar los usuarios creados en base de datos"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\":\"eduardo_326\",\r\n    \"password\":\"21zxcz215z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Este metodo permite autenticarnos en el sistema, entre los datos de respuesta esta el token JWT."
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon Favorito Añadir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idUsuario\":\"648e54945851d94224a606fd\",\r\n    \"pokemon\":21\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users/favorites",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"favorites"
+					]
+				},
+				"description": "Este endpoint permite añadir un pokemon a la lista de favoritos de un usuario, se debe enviar el ID numerico del pokemon y el ID de la base de datos del usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon favorito Listar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/users/favorites/648e54945851d94224a606fd",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"favorites",
+						"648e54945851d94224a606fd"
+					]
+				},
+				"description": "Este endpoint permite consultas los pokemones favoritos de un usuario, se debe enviar el ID del usuario en la URL\n\nlocalhost:8080/api/users/favorites/:IDUsuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemon Favorito Borrar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/users/favorites/648e9d929e31d64bd8710187",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"favorites",
+						"648e9d929e31d64bd8710187"
+					]
+				},
+				"description": "Este endpoint permite eliminar un pokemon de la lista de favoritos de un usuario, se debe enviar el ID del usuario en la URL.\n\nlocalhost:8080/api/users/favorites/:IDUsuario"
+			},
+			"response": []
+		}
+	]
+}
